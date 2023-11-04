@@ -1,0 +1,29 @@
+{
+  "name": "general-discord-bot",
+  "version": "1.0.0",
+  "description": "General Discord Bot",
+  "main": "index.js",
+  "repository": "https://github.com/bmh16e/general-discord-bot",
+  "author": "bmh16e",
+  "license": "none",
+  "scripts": {
+    "start": "tsx --require dotenv/config src/index.ts",
+    "lint": "eslint . --ext .ts",
+    "lint-and-fix": "eslint . --ext .ts --fix"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "discord.js": "^14.13.0",
+    "openai": "^4.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
+    "tsx": "^3.14.0",
+    "typescript": "^5.2.2"
+  }
+}

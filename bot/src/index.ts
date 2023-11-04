@@ -1,8 +1,8 @@
 import { Client } from 'discord.js';
 import OpenAI from 'openai';
 import { ready } from './listeners/ready';
-import { interactionCreate } from './listeners/interactionCreate';
-import { messageCreate } from './listeners/messageCreate';
+import { interactionCreate } from './listeners/interaction-create';
+import { messageCreate } from './listeners/message-create';
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;

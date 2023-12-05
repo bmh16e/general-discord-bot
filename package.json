@@ -1,20 +1,35 @@
 {
   "name": "general-discord-bot",
   "version": "1.0.0",
+  "type": "module",
   "description": "General Discord Bot",
   "main": "index.js",
   "repository": "https://github.com/bmh16e/general-discord-bot",
   "author": "bmh16e",
   "license": "none",
   "scripts": {
-    "start": "tsx --require dotenv/config src/index.ts",
+    "build": "tsc",
+    "start": "node --no-warnings=ExperimentalWarning --loader ts-node/esm --require dotenv/config src/index.ts",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix"
   },
   "dependencies": {
+    "@mikro-orm/cli": "6.0.0-rc.2",
+    "@mikro-orm/core": "6.0.0-rc.2",
+    "@mikro-orm/postgresql": "6.0.0-rc.2",
+    "@mikro-orm/reflection": "6.0.0-rc.2",
     "axios": "^1.6.0",
     "discord.js": "^14.13.0",
-    "openai": "^4.14.0"
+    "openai": "^4.14.0",
+    "ts-node": "^10.9.1"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/db/config/config.ts",
+      "./dist/db/config/config.d.ts"
+
+    ]
   },
   "devDependencies": {
     "@types/node": "^20.8.9",

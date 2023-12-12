@@ -2,9 +2,12 @@
 
 Basic Discord bot written in TypeScript
 
+- Remove channel from DB when deleted from server
+
 # Topics:
 
 - DnD
+  - Roll commands for D20 and other dice
 - Valorant
 - Star Wars
 - Call of Duty

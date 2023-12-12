@@ -1,12 +1,30 @@
-import { CommandInteraction, Client, ApplicationCommandType } from 'discord.js';
+import {
+  CommandInteraction,
+  Client,
+  ApplicationCommandType,
+  ApplicationCommandOptionType,
+} from 'discord.js';
 import { Command } from './index';
 
 export const greeting: Command = {
-  name: 'hello',
+  name: 'greet',
   description: 'Says hello to the user',
   type: ApplicationCommandType.ChatInput,
-  options: [],
+  options: [
+    {
+      description: 'True if you want to be greeted personally',
+      name: 'personal',
+      type: ApplicationCommandOptionType.Boolean,
+    },
+  ],
   execute: async (_: Client, interaction: CommandInteraction) => {
-    await interaction.followUp({ ephemeral: true, content: 'Hello!' });
+    const personal = interaction.options.get('personal')?.value;
+    await interaction.followUp({ ephemeral: false, content: 'Hello!' });
+    setTimeout(async () => {
+      await interaction.followUp({
+        ephemeral: false,
+        content: 'Hello Again!',
+      });
+    }, 5000);
   },
 };

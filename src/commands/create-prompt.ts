@@ -36,6 +36,15 @@ export const createPrompt: Command = {
     const useUserContext = interaction.options.get('use_user_context')
       ?.value as boolean;
 
+    if (content.length > 2000) {
+      await interaction.followUp({
+        ephemeral: true,
+        content:
+          "That prompt is a little too lonnnnngggg! Please keep it under 2000 characters. So the matrix doesn't break or something.",
+      });
+      return;
+    }
+
     // check if channel exists in db and add it if it doesn't exist
     const existingChannel = await pgConfig<Channel>('channels')
       .where({ channel_id: channelId })

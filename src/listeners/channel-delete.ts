@@ -8,6 +8,5 @@ export const channelDeleteListener = (client: Client): void => {
     await pgConfig<Channel>('channels')
       .where({ channel_id: channel.id })
       .delete();
-    console.log(channel);
   });
 };

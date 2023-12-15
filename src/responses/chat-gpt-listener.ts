@@ -20,10 +20,10 @@ export const chatGPTListener: Response = {
     if (prompt.use_user_context) {
       userContextString = `You are talking to ${message.author.displayName}.`;
     }
-    console.log(prompt.prompt_content.length);
     const chat = await openai.completions.create({
       model: 'gpt-3.5-turbo-instruct',
       max_tokens: 250,
+
       prompt: `${prompt.prompt_content}. ${userContextString} ${message.content} Do not surround the anwser with quotes.`,
     });
 

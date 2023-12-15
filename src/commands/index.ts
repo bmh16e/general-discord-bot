@@ -1,21 +1,24 @@
 import {
   CommandInteraction,
   ChatInputApplicationCommandData,
-  SlashCommandBuilder,
   Client,
-  Interaction,
   PermissionsBitField,
   GuildMember,
 } from 'discord.js';
-import { greeting } from './greeting';
+import { chatGPT } from './chat-gpt';
 import { createPrompt } from './create-prompt';
 import { deletePrompt } from './delete-prompt';
+import OpenAI from 'openai';
 
 export interface Command extends ChatInputApplicationCommandData {
-  execute: (client: Client, interaction: CommandInteraction) => void;
+  execute: (
+    client: Client,
+    openaiClient: OpenAI,
+    interaction: CommandInteraction,
+  ) => void;
 }
 
-export const commands: Command[] = [greeting, createPrompt, deletePrompt];
+export const commands: Command[] = [chatGPT, createPrompt, deletePrompt];
 
 export const hasRequiredPermissions = (interaction: CommandInteraction) => {
   const member = interaction.member;

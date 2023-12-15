@@ -1,13 +1,8 @@
-import {
-  CommandInteraction,
-  Client,
-  ApplicationCommandType,
-  ApplicationCommandOptionType,
-  SlashCommandBuilder,
-} from 'discord.js';
+import { CommandInteraction, Client, ApplicationCommandType } from 'discord.js';
 import { Command, hasRequiredPermissions } from './index';
 import { pgConfig } from 'src/db/config/config';
-import { Channel, Prompt } from 'src/db/config/entities';
+import { Prompt } from 'src/db/config/entities';
+import OpenAI from 'openai';
 
 export const deletePrompt: Command = {
   name: 'delete-prompt',
@@ -15,7 +10,7 @@ export const deletePrompt: Command = {
     'Deletes the GPT prompt in the channel, allowing a new one to be created',
   type: ApplicationCommandType.ChatInput,
 
-  execute: async (_: Client, interaction: CommandInteraction) => {
+  execute: async (_: Client, __: OpenAI, interaction: CommandInteraction) => {
     if (hasRequiredPermissions(interaction)) {
       const channelId = interaction.channelId;
       await pgConfig<Prompt>('prompts')

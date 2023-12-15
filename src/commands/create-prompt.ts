@@ -7,6 +7,7 @@ import {
 import { Command, hasRequiredPermissions } from './index';
 import { pgConfig } from 'src/db/config/config';
 import { Channel, Prompt } from 'src/db/config/entities';
+import OpenAI from 'openai';
 
 export const createPrompt: Command = {
   name: 'create-prompt',
@@ -29,7 +30,7 @@ export const createPrompt: Command = {
     },
   ],
 
-  execute: async (_: Client, interaction: CommandInteraction) => {
+  execute: async (_: Client, __: OpenAI, interaction: CommandInteraction) => {
     if (hasRequiredPermissions(interaction)) {
       const channelId = interaction.channelId;
       const content = interaction.options.get('content')?.value as string;

@@ -15,6 +15,7 @@ export class InteractionClient {
   private discordClient: Client<boolean>;
 
   constructor(openaiClient: OpenAI, discordClient: Client<boolean>) {
+    console.log('interaction client created');
     this.openaiClient = openaiClient;
     this.discordClient = discordClient;
   }
@@ -41,7 +42,7 @@ export class InteractionClient {
     }
 
     await interaction.deferReply();
-    slashCommand.execute(this.discordClient, interaction);
+    slashCommand.execute(this.discordClient, this.openaiClient, interaction);
   }
 
   // check if server exists in db and adds it if it doesn't exist

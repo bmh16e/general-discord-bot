@@ -9,7 +9,8 @@ import OpenAI from 'openai';
 
 export const chatGPT: Command = {
   name: 'chat-gpt',
-  description: 'Pass a message to the GPT bot to get a response.',
+  description:
+    'Passes a string to the OpenAI API. Please do not include any personal information.',
   type: ApplicationCommandType.ChatInput,
   options: [
     {

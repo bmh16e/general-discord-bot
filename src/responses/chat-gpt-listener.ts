@@ -23,8 +23,7 @@ export const chatGPTListener: Response = {
     const chat = await openai.completions.create({
       model: 'gpt-3.5-turbo-instruct',
       max_tokens: 250,
-
-      prompt: `${prompt.prompt_content}. ${userContextString} ${message.content} Do not surround the anwser with quotes.`,
+      prompt: `${prompt.prompt_content}. ${userContextString} ${message.content}.  Do not surround the anwser with quotes.`,
     });
 
     const response = chat.choices[0].text;
